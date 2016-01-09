@@ -1,0 +1,44 @@
+<Kicad>
+	Application: kicad
+	Version: 4.0.0-rc2-stable release build
+	wxWidgets: Version 3.0.2 (debug,wchar_t,compiler with C++ ABI 1009,GCC 5.2.0,wx containers,compatible with 2.8)
+	Platform: Windows 7 (build 7601, Service Pack 1), 64-bit edition, 64 bit, Little endian, wxMSW
+	Boost version: 1.57.0
+	         USE_WX_GRAPHICS_CONTEXT=OFF
+	         USE_WX_OVERLAY=OFF
+	         KICAD_SCRIPTING=ON
+	         KICAD_SCRIPTING_MODULES=ON
+	         KICAD_SCRIPTING_WXPYTHON=ON
+	         USE_FP_LIB_TABLE=HARD_CODED_ON
+	         BUILD_GITHUB_PLUGIN=ON
+
+<CS+>
+	CS+ for CC V3.03.00  [16 Nov 2015]
+
+	製品情報
+
+	バージョン情報
+	統合開発環境 フレームワーク V5.02.00.09 [05 Aug 2015] 統合開発環境のメイン・ウインドウ部です。
+	デバッグ・ツール共通インタフェース V3.02.00.01 [23 Jun 2015] デバッグ・ツールを利用するための共通のインタフェースを統合したライブラリです。
+	デバイス情報共通インタフェース V5.02.00.02 [22 Jun 2015] デバイス固有情報を取得するための共通ライブラリです。
+	RH850ビルド・ツールCC-RH用プラグイン V1.04.00.00 [19 Jun 2015] RH850用CC-RHコンパイラを利用するためのビルド・ツール・プラグインです。
+	RL78ビルド・ツールCC-RL用プラグイン V1.01.00.00 [19 Jun 2015] RL78用CC-RLコンパイラを利用するためのビルド・ツール・プラグインです。
+	RXビルド・ツールCC-RX用プラグイン V2.04.00.00 [19 Jun 2015] RX用CC-RXコンパイラを利用するためのビルド・ツール・プラグインです。
+	CC-RX V2.04.01 ビルド・ツールです。
+	  BuildToolCCRXCore V3.01.00.04 [14 Jul 2015]
+	デバッガ・コレクション・プラグイン V3.02.00.04 [21 Jul 2015] RH850, RX, RL78 エミュレータ／シミュレータを利用するためのデバッグ・ツール・プラグインです。
+	  Device V3.02.00.04 [21 Jul 2015]
+	  DeviceRX V3.02.00.01 [23 Jun 2015]
+	  ConfigurationRXEmulator V3.02.00.01 [23 Jun 2015]
+	  EngineManager V3.02.00.04 [21 Jul 2015]
+	  EngineManagerE1E20 V3.02.00.02 [06 Jul 2015]
+	  EngineControllerRXE1E20 V3.02.00.04 [21 Jul 2015]
+	  RX Asm/Disasm V3.02.00.01 [23 Jun 2015]
+	  DBEvaluatorManager V3.02.00.01 [23 Jun 2015]
+	  LoadModuleManager V3.02.00.02 [06 Jul 2015]
+	エディタ・パネル V1.08.00.04 [16 Jul 2015] エディタ・パネルのプラグインです。
+	スタック見積もりツール V1.05.00.02 [30 Jul 2014] スタック使用量をツリー形式で表示するツールです。
+
+<TestEditor>
+	As you like.
+
