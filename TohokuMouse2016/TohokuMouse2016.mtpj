@@ -87,6 +87,46 @@
       <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
       <ParentItem>5f3ee69e-042a-4129-8e46-6a5e6fa4d7c7</ParentItem>
     </Instance>
+    <Instance Guid="d671eec6-e31c-4636-9d62-9f60b6d6128c">
+      <Name>Common.h</Name>
+      <Type>File</Type>
+      <RelativePath>Common.h</RelativePath>
+      <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
+      <ParentItem>5f3ee69e-042a-4129-8e46-6a5e6fa4d7c7</ParentItem>
+    </Instance>
+    <Instance Guid="6c67f1c2-62ae-4432-8c87-f584dfea2d41">
+      <Name>HAL</Name>
+      <Type>Category</Type>
+      <ParentItem>5f3ee69e-042a-4129-8e46-6a5e6fa4d7c7</ParentItem>
+    </Instance>
+    <Instance Guid="8d01c278-bb66-4da6-a681-35fe6b72180d">
+      <Name>Mcu.c</Name>
+      <Type>File</Type>
+      <RelativePath>HAL\Mcu.c</RelativePath>
+      <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
+      <ParentItem>6c67f1c2-62ae-4432-8c87-f584dfea2d41</ParentItem>
+    </Instance>
+    <Instance Guid="1a105b35-fb97-41fc-8903-c9708bb0289c">
+      <Name>Mcu.h</Name>
+      <Type>File</Type>
+      <RelativePath>HAL\Mcu.h</RelativePath>
+      <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
+      <ParentItem>6c67f1c2-62ae-4432-8c87-f584dfea2d41</ParentItem>
+    </Instance>
+    <Instance Guid="148bc00e-3899-40c0-80d2-e2aee8dd345e">
+      <Name>Sci.c</Name>
+      <Type>File</Type>
+      <RelativePath>HAL\Sci.c</RelativePath>
+      <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
+      <ParentItem>6c67f1c2-62ae-4432-8c87-f584dfea2d41</ParentItem>
+    </Instance>
+    <Instance Guid="c46dd95f-19b2-49cb-8204-675f1feb5537">
+      <Name>Sci.h</Name>
+      <Type>File</Type>
+      <RelativePath>HAL\Sci.h</RelativePath>
+      <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
+      <ParentItem>6c67f1c2-62ae-4432-8c87-f584dfea2d41</ParentItem>
+    </Instance>
   </Class>
   <Class Guid="fb98844b-2c27-4275-9804-f6e63e204da0">
     <Instance Guid="fb98844b-2c27-4275-9804-f6e63e204da0">
@@ -114,6 +154,12 @@
       <MemoCount>0</MemoCount>
     </Instance>
   </Class>
+  <Class Guid="873c9a58-9bc5-439a-b476-78629a4553ed">
+    <Instance Guid="873c9a58-9bc5-439a-b476-78629a4553ed">
+      <ProjectDeviceChangedCounter>0</ProjectDeviceChangedCounter>
+      <ProjectInitialDeviceName>R5F5631MCxFL</ProjectInitialDeviceName>
+    </Instance>
+  </Class>
   <Class Guid="c3835e31-dea3-4c93-b02b-d2db997f7630">
     <Instance Guid="c3835e31-dea3-4c93-b02b-d2db997f7630">
       <BuildToolManager>3a79707d-5977-45f7-ac11-19c35e333132</BuildToolManager>
@@ -138,7 +184,11 @@
       <SourceItemType4>CSource</SourceItemType4>
       <SourceItemGuid5>e9dfd3aa-7948-4f70-87e7-789ec895eb4e</SourceItemGuid5>
       <SourceItemType5>CSource</SourceItemType5>
-      <SourceItemCount>6</SourceItemCount>
+      <SourceItemGuid6>8d01c278-bb66-4da6-a681-35fe6b72180d</SourceItemGuid6>
+      <SourceItemType6>CSource</SourceItemType6>
+      <SourceItemGuid7>148bc00e-3899-40c0-80d2-e2aee8dd345e</SourceItemGuid7>
+      <SourceItemType7>CSource</SourceItemType7>
+      <SourceItemCount>8</SourceItemCount>
       <LastDeviceChangedCounter>0</LastDeviceChangedCounter>
     </Instance>
     <Instance Guid="9e208646-ccba-4100-a676-29b1efe6545f">
@@ -382,7 +432,7 @@ C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RX\V2.04.01
       <COptionFloatOrder-DefaultValue>False</COptionFloatOrder-DefaultValue>
       <COptionIncode-DefaultValue>Sjis</COptionIncode-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8587493011721398479</TimeTagModified--0>
+      <TimeTagModified--0>-8587492668302255954</TimeTagModified--0>
       <COptionLangC-0>C</COptionLangC-0>
       <COptionListfile-0>False</COptionListfile-0>
       <COptionLogo-0>False</COptionLogo-0>
@@ -399,7 +449,9 @@ C:\Program Files (x86)\Renesas Electronics\CS+\CC\CC-RX\V2.04.01
       <COptionShowSource-0>False</COptionShowSource-0>
       <COptionXcref-0>False</COptionXcref-0>
       <COptionDebug-0>True</COptionDebug-0>
-      <COptionInclude-0 />
+      <COptionInclude-0>HAL
+.
+</COptionInclude-0>
       <COptionMisra2004RuleFile-0 />
       <COptionPreCompileCommands-0 />
       <COptionShowConditionals-0>False</COptionShowConditionals-0>
@@ -1046,6 +1098,26 @@ D_2=R_2
       <ItemAddTime>635879349134577330</ItemAddTime>
       <ItemAddTimeCount>10</ItemAddTimeCount>
     </Instance>
+    <Instance Guid="d671eec6-e31c-4636-9d62-9f60b6d6128c">
+      <ItemAddTime>635879627313852434</ItemAddTime>
+      <ItemAddTimeCount>0</ItemAddTimeCount>
+    </Instance>
+    <Instance Guid="8d01c278-bb66-4da6-a681-35fe6b72180d">
+      <ItemAddTime>635879692552519854</ItemAddTime>
+      <ItemAddTimeCount>0</ItemAddTimeCount>
+    </Instance>
+    <Instance Guid="1a105b35-fb97-41fc-8903-c9708bb0289c">
+      <ItemAddTime>635879692552519854</ItemAddTime>
+      <ItemAddTimeCount>1</ItemAddTimeCount>
+    </Instance>
+    <Instance Guid="148bc00e-3899-40c0-80d2-e2aee8dd345e">
+      <ItemAddTime>635879692552519854</ItemAddTime>
+      <ItemAddTimeCount>2</ItemAddTimeCount>
+    </Instance>
+    <Instance Guid="c46dd95f-19b2-49cb-8204-675f1feb5537">
+      <ItemAddTime>635879692552519854</ItemAddTime>
+      <ItemAddTimeCount>3</ItemAddTimeCount>
+    </Instance>
     <Instance Guid="a7be515f-f007-45ed-9059-4e1500c0f74d">
       <TimeTagModified-SourceItem0--0>-8587493011720198478</TimeTagModified-SourceItem0--0>
       <SourceItem0-IsLockedByUser>False</SourceItem0-IsLockedByUser>
@@ -1071,6 +1143,14 @@ D_2=R_2
       <SourceItem5-IsLockedByUser>False</SourceItem5-IsLockedByUser>
       <SourceItem5-BuildingTarget-0>True</SourceItem5-BuildingTarget-0>
       <SourceItem5-IndividualCompileOption-0>False</SourceItem5-IndividualCompileOption-0>
+      <TimeTagModified-SourceItem6--0>-8587492668302255954</TimeTagModified-SourceItem6--0>
+      <SourceItem6-IsLockedByUser>False</SourceItem6-IsLockedByUser>
+      <SourceItem6-BuildingTarget-0>True</SourceItem6-BuildingTarget-0>
+      <SourceItem6-IndividualCompileOption-0>False</SourceItem6-IndividualCompileOption-0>
+      <TimeTagModified-SourceItem7--0>-8587492668302255954</TimeTagModified-SourceItem7--0>
+      <SourceItem7-IsLockedByUser>False</SourceItem7-IsLockedByUser>
+      <SourceItem7-BuildingTarget-0>True</SourceItem7-BuildingTarget-0>
+      <SourceItem7-IndividualCompileOption-0>False</SourceItem7-IndividualCompileOption-0>
     </Instance>
   </Class>
   <Class Guid="44fa27c9-0aa0-4297-bd3b-2c5c5bdb8881">
@@ -2235,6 +2315,11 @@ D_2=R_2
       <DebuggerProperty-HookProperty-HookTransaction-Broke-Length>0</DebuggerProperty-HookProperty-HookTransaction-Broke-Length>
       <DebuggerProperty-HookProperty-HookTransaction-Connected-Length>0</DebuggerProperty-HookProperty-HookTransaction-Connected-Length>
       <DebuggerProperty-HookProperty-HookTransaction-Disconnecting-Length>0</DebuggerProperty-HookProperty-HookTransaction-Disconnecting-Length>
+    </Instance>
+  </Class>
+  <Class Guid="2a2c2a43-ecdb-4e88-80bd-e75f3e33db90">
+    <Instance Guid="2a2c2a43-ecdb-4e88-80bd-e75f3e33db90">
+      <ProductVersion>5.02.00.00</ProductVersion>
     </Instance>
   </Class>
 </CubeSuiteProject>

@@ -18,6 +18,13 @@
       <Path>stacksct.h</Path>
       <Path>typedefine.h</Path>
       <Path>vect.h</Path>
+      <Path>Common.h</Path>
+      <Category Name="HAL">
+        <Path>HAL\Mcu.c</Path>
+        <Path>HAL\Mcu.h</Path>
+        <Path>HAL\Sci.c</Path>
+        <Path>HAL\Sci.h</Path>
+      </Category>
     </Files>
     <Device Series="RX">R5F5631MCxFL</Device>
     <BuildOptions Name="CC-RX" Version="V2.04.01">
@@ -29,6 +36,8 @@
           <Option>-isa=rxv1</Option>
           <Option>-fpu</Option>
           <Option>-lang=c</Option>
+          <Option>-include=HAL</Option>
+          <Option>-include=.</Option>
           <Option>-output=obj</Option>
           <Option>-debug</Option>
           <Option>-nologo</Option>
@@ -70,8 +79,13 @@
           <Path>DefaultBuild\sbrk.obj</Path>
           <Path>DefaultBuild\TohokuMouse2016.obj</Path>
           <Path>DefaultBuild\vecttbl.obj</Path>
+          <Path>DefaultBuild\Mcu.obj</Path>
+          <Path>DefaultBuild\Sci.obj</Path>
         </LinkOrder>
-        <CommonOptions />
+        <CommonOptions>
+          <IncludePathForC>HAL</IncludePathForC>
+          <IncludePathForC>.</IncludePathForC>
+        </CommonOptions>
       </BuildMode>
     </BuildOptions>
   </Project>

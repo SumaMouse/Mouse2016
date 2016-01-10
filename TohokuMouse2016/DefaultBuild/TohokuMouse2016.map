@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W2.04.00 )             09-Jan-2016 11:28:40
+Renesas Optimizing Linker (W2.04.00 )             10-Jan-2016 15:44:00
 
 *** Options ***
 
@@ -10,6 +10,8 @@ Renesas Optimizing Linker (W2.04.00 )             09-Jan-2016 11:28:40
 -input=DefaultBuild\sbrk.obj
 -input=DefaultBuild\TohokuMouse2016.obj
 -input=DefaultBuild\vecttbl.obj
+-input=DefaultBuild\Mcu.obj
+-input=DefaultBuild\Sci.obj
 -noprelink
 -output=DefaultBuild\TohokuMouse2016.abs
 -list=DefaultBuild\TohokuMouse2016.map
@@ -38,11 +40,11 @@ R_2
 B
                                   00000004  00000403       400   4
 R
-                                  00000404  00000407         4   4
+                                  00000404  0000040b         8   4
 SU
-                                  00000408  00000507       100   4
+                                  0000040c  0000050b       100   4
 SI
-                                  00000508  00000807       300   4
+                                  0000050c  0000080b       300   4
 PResetPRG
                                   fffc0000  fffc0030        31   1
 C_1
@@ -66,19 +68,19 @@ D_1
 D_2
                                   fffc0570  fffc0570         0   1
 D
-                                  fffc0570  fffc0573         4   4
+                                  fffc0570  fffc0577         8   4
 P
-                                  fffc0574  fffc061a        a7   1
+                                  fffc0578  fffc06e1       16a   1
 PIntPRG
-                                  fffc061b  fffc07b8       19e   1
+                                  fffc06e2  fffc087d       19c   1
 W_1
-                                  fffc07b9  fffc07b9         0   1
+                                  fffc087e  fffc087e         0   1
 W_2
-                                  fffc07b9  fffc07b9         0   1
+                                  fffc087e  fffc087e         0   1
 W
-                                  fffc07b9  fffc07b9         0   1
+                                  fffc087e  fffc087e         0   1
 L
-                                  fffc07b9  fffc07b9         0   1
+                                  fffc087e  fffc087e         0   1
 $ADDR_C_FFFFFF80
                                   ffffff80  ffffff83         4   1
 $ADDR_C_FFFFFFA0
@@ -88,6 +90,6 @@ FIXEDVECT
 
 *** Total Section Size ***
 
-RAMDATA SECTION:  00000804 Byte(s)
-ROMDATA SECTION:  000004b8 Byte(s)
-PROGRAM SECTION:  00000276 Byte(s)
+RAMDATA SECTION:  00000808 Byte(s)
+ROMDATA SECTION:  000004bc Byte(s)
+PROGRAM SECTION:  00000337 Byte(s)

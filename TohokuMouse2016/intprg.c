@@ -434,7 +434,7 @@ void Excep_POE_OEI1(void){ }
 void Excep_POE_OEI2(void){ }
 
 // TMR0 CMIA0
-void Excep_TMR0_CMIA0(void){ }
+//void Excep_TMR0_CMIA0(void){ }
 
 // TMR0 CMIB0
 void Excep_TMR0_CMIB0(void){ }

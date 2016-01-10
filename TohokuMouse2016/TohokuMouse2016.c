@@ -9,7 +9,12 @@
 /*                                                                     */
 /***********************************************************************/
 
+#include <machine.h>
 #include "iodefine.h"
+#include "Common.h"
+
+#include "Mcu.h"
+
 
 //#include "typedefine.h"
 #ifdef __cplusplus
@@ -24,29 +29,47 @@ void abort(void);
 }
 #endif
 
+
+#pragma interrupt (Excep_TMR0_CMIA0(vect=170))
+
+
+static u32 timer1ms = 0;
+
 void main(void)
 {
 	unsigned long timer = 0;
 	
+	
+	PORT2.PODR.BIT.B7 = 1;
+	PORT3.PODR.BIT.B1 = 1;
+
 	PORT2.PDR.BIT.B7 = 1;
 	PORT3.PDR.BIT.B1 = 1;
 
-	PORT2.PODR.BIT.B7 = 0;
-	PORT3.PODR.BIT.B1 = 0;
-	for(timer=0;timer<0xFFFul;timer++);
+	McuInit();
+
+	setpsw_i();
+
 	
 	while(1) {
 		
-		PORT2.PODR.BIT.B7 = 1;
-		PORT3.PODR.BIT.B1 = 0;
-		for(timer=0;timer<0xFFFul;timer++);
-
-		PORT2.PODR.BIT.B7 = 0;
-		PORT3.PODR.BIT.B1 = 1;
-		for(timer=0;timer<0xFFFul;timer++);
-
+		/* none */
+		
 	}
 }
+
+void Excep_TMR0_CMIA0(void){
+	
+	IR(TMR0,CMIA0) = 0;
+	
+	timer1ms++;
+	
+	if (timer1ms > 1000) {
+		PORT3.PODR.BIT.B1 ^= 1;
+		timer1ms = 0;
+	}
+}
+
 
 #ifdef __cplusplus
 void abort(void)
