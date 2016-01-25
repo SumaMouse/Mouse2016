@@ -7,6 +7,9 @@
 -input=DefaultBuild\vecttbl.obj
 -input=DefaultBuild\Mcu.obj
 -input=DefaultBuild\Sci.obj
+-input=DefaultBuild\Adc.obj
+-input=DefaultBuild\Gpio.obj
+-input=DefaultBuild\Test.obj
 -noprelink
 -output=DefaultBuild\TohokuMouse2016.abs
 -list=DefaultBuild\TohokuMouse2016.map

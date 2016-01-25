@@ -2,10 +2,7 @@
 #include	"Common.h"
 #include	"Sci.h"
 
-#if 0
-
-#pragma interrupt (Excep_SCI1_ERI1(vect=218))
-#pragma interrupt (Excep_SCI1_RXI1(vect=219))
+#pragma interrupt (Excep_SCI1_RXI1(vect=217))
 
 
 #define		TX_BUFFER_SIZE				(100)
@@ -20,8 +17,6 @@ static	u16	TxBufferReadIndex;
 
 static	u16	RxBufferWriteIndex;
 static	u16	RxBufferReadIndex;
-
-static u8 RcvCommand = 0;
 
 void	SciInit(void) {
 
@@ -44,7 +39,7 @@ void	SciInit(void) {
 
 void	SciSendPeriodic(void) {
 
-	if ((TxBufferWriteIndex != TxBufferReadIndex) && (SCI1.SSR.BIT.TDRE == 1)) {
+	if ((TxBufferWriteIndex != TxBufferReadIndex) && (SCI1.SSR.BIT.TEND == 1)) {
 		u8 data;
 
 		data = TxBuffer[TxBufferReadIndex];
@@ -70,10 +65,10 @@ void	SciSendHex(u8 beam, u32 value) {
 	u16	i;
 	u16	cc;
 
-	if (Beam > 8) Beam = 8;
+	if (beam > 8) beam = 8;
 
 	for(i=8-beam;i<8;i++){
-		cc = (Value >> (28-4*i)) & 0x0000000FL;
+		cc = (value >> (28-4*i)) & 0x0000000FL;
 		if(cc < 10)	SciSendByte(cc + '0');
 		else		SciSendByte(cc + 'A' - 10);
 	}
@@ -173,12 +168,10 @@ void	Excep_SCI1_RXI1(void)
 		RxBuffer[RxBufferWriteIndex] = data;
 		RxBufferWriteIndex = wp;
 	}
-
-	RcvCommand = data;
-	SciSendByte(RcvCommand);
 }
 
 
+#if 0
 void	Excep_SCI1_ERI1(void)
 {
 	u8	ErrData;
@@ -201,5 +194,6 @@ void	Excep_SCI1_ERI1(void)
 #endif
 
 }
-
 #endif
+
+

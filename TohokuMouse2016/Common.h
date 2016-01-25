@@ -11,4 +11,7 @@ typedef	unsigned long	u32;
 typedef	signed long		s32;
 typedef	float			f32;
 
+enum {FALSE=0,TRUE=1};
+typedef unsigned char	bool;
+
 #endif	/* __COMMON__ */

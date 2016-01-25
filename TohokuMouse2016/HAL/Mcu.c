@@ -52,17 +52,74 @@ void	McuInit(void) {
 	
 
 	/* 1ms割り込み用 */
-	TMR0.TCCR.BYTE = 0x0D;	/* PCLK/1024でカウント */
-	TMR0.TCR.BYTE = 0x48;	/* コンペアマッチAでカウンタクリア、CMIEA許可 */
-	TMR0.TCORA = 47;		/* 1.002667ms Cycle */
+	TMR0.TCCR.BYTE = 0x0D;	// PCLK/1024でカウント
+	TMR0.TCR.BYTE = 0x48;	// コンペアマッチAでカウンタクリア、CMIEA許可
+	TMR0.TCORA = 47;		// 1.002667ms Cycle
 	
-	IEN(TMR0,CMIA0) = 1;	/* TMR0のCMIA0割り込み要求許可 */
-	IPR(TMR0,CMIA0) = 2;	/* TMR0のCMIA0割り込みレベル設定 */
+	IEN(TMR0,CMIA0) = 1;	// TMR0のCMIA0割り込み要求許可
+	IPR(TMR0,CMIA0) = 3;	// TMR0のCMIA0割り込みレベル設定
 	
 	
+	/* パルス出力 */
+	MSTP(MTU) = 0;			//ストップ解除
+	
+	MTU3.TCR.BYTE = 0x22;	//b0-2:TPSC = 2		PCLK/16
+							//b3-4:CKEG = 0		Up Edge count
+							//b5-7:CCLR = 1		Clear TGRA compare match
+	MTU3.TMDR.BYTE = 0x02;	//b0-3:MD = 2		PWM mode1
+							//b4:BFA = 0
+							//b5:BFB = 0
+							//b6:BFE = 0
+	MTU3.TIORH.BYTE = 0x12;	
+
+	MTU3.TGRA = 1000;
+	MTU3.TGRB = 500;
+	
+	MTU.TSTR.BIT.CST3 = 1;
+
+	
+	/* シリアル通信 */
+	MSTP(SCI1) = 0;			//ストップ解除
+
+	SCI1.SCR.BYTE = 0x00;	/* 内蔵クロック、送受信禁止 */
+	SCI1.SMR.BYTE = 0x00;	/* PCLKクロック、STOP1bit、パリティ無し、8Bitデータ、調歩同期式 */
+	SCI1.BRR = 77;			/* 19200bps */
+	SCI1.SSR.BYTE = 0x00;
+	
+	/* 送信許可 */
+	SCI1.SCR.BYTE = 0x20;
+
+	IEN(SCI1,RXI1) = 1;	/* SCI1のRXI1割り込み要求許可 */
+	IPR(SCI1,RXI1) = 2;	/* SCI1のRXI1割り込みレベル設定 */
+	IR(SCI1,RXI1) = 0;
+	
+	
+	/* ポート初期化 */
+	PORT2.PODR.BIT.B6 = 1;		//TXD1
+	PORT2.PODR.BIT.B7 = 1;		//LED0
+	PORT3.PODR.BIT.B0 = 1;		//RXD1
+	PORT3.PODR.BIT.B1 = 1;		//LED1
+
+	PORT2.PDR.BIT.B6 = 1;		//TXD1
+	PORT2.PDR.BIT.B7 = 1;		//LED0
+	PORT3.PDR.BIT.B0 = 0;		//RXD1
+	PORT3.PDR.BIT.B1 = 1;		//LED1
+
+	MPC.PWPR.BIT.B0WI = 0;		//PFSWE書き込み許可
+	MPC.PWPR.BIT.PFSWE = 1;		//PFS書き込み許可
+	MPC.P14PFS.BIT.PSEL = 1;	//L_PULSE
+	MPC.P26PFS.BIT.PSEL = 10;	//TXD1
+	MPC.P30PFS.BIT.PSEL = 10;	//RDX1
+	MPC.PWPR.BIT.PFSWE = 0;		//PFS書き込み禁止
+
+	PORT2.PMR.BIT.B6 = 1;		//TXD1
+	PORT3.PMR.BIT.B0 = 1;		//RXD1
+	PORT1.PMR.BIT.B4 = 1;		//L_PULSE
+
+
 }
 
-static void waitClockSet(u8 count) {	/* 1count = 0.512ms(typ.) */
+static void waitClockSet(u8 count) {	/* 1count = 0.512ms(typ.)@PCLKB=125kHz */
 	u8 l_start = TMR0.TCNT;
 	u8 l_delta = 0;
 	

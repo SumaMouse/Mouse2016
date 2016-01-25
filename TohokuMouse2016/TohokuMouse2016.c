@@ -14,7 +14,10 @@
 #include "Common.h"
 
 #include "Mcu.h"
+#include "Sci.h"
+#include "Gpio.h"
 
+#include "Test.h"
 
 //#include "typedefine.h"
 #ifdef __cplusplus
@@ -39,33 +42,34 @@ void main(void)
 {
 	unsigned long timer = 0;
 	
-	
-	PORT2.PODR.BIT.B7 = 1;
-	PORT3.PODR.BIT.B1 = 1;
-
-	PORT2.PDR.BIT.B7 = 1;
-	PORT3.PDR.BIT.B1 = 1;
-
 	McuInit();
-
+	SciInit();
+	TestInit();
+	
 	setpsw_i();
 
-	
+
 	while(1) {
 		
-		/* none */
+		TestSci();
 		
 	}
 }
 
 void Excep_TMR0_CMIA0(void){
 	
+	static u8 t = 0;
+	
 	IR(TMR0,CMIA0) = 0;
+	
+	SciSendPeriodic();
 	
 	timer1ms++;
 	
 	if (timer1ms > 1000) {
-		PORT3.PODR.BIT.B1 ^= 1;
+		t ^= 1;
+		GpioWrteLed1(t);
+
 		timer1ms = 0;
 	}
 }

@@ -560,7 +560,7 @@ void Excep_SCI0_TXI0(void){ }
 void Excep_SCI0_TEI0(void){ }
 
 // SCI1 RXI1
-void Excep_SCI1_RXI1(void){ }
+//void Excep_SCI1_RXI1(void){ }
 
 // SCI1 TXI1
 void Excep_SCI1_TXI1(void){ }
