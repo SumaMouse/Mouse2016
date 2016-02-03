@@ -1,7 +1,7 @@
-#include	"iodefine.h"
-#include	"common.h"
+#include "iodefine.h"
+#include "common.h"
 
-#include	"Adc.h"
+#include "Adc.h"
 
 
 void AdcInit(void) {

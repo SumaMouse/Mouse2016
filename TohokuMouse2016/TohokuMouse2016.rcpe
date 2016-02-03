@@ -28,6 +28,8 @@
         <Path>HAL\Adc.h</Path>
         <Path>HAL\Gpio.c</Path>
         <Path>HAL\Gpio.h</Path>
+        <Path>HAL\Timer.c</Path>
+        <Path>HAL\Timer.h</Path>
       </Category>
       <Category Name="APL">
         <Path>APL\Test.c</Path>
@@ -93,6 +95,7 @@
           <Path>DefaultBuild\Adc.obj</Path>
           <Path>DefaultBuild\Gpio.obj</Path>
           <Path>DefaultBuild\Test.obj</Path>
+          <Path>DefaultBuild\Timer.obj</Path>
         </LinkOrder>
         <CommonOptions>
           <IncludePathForC>APL</IncludePathForC>

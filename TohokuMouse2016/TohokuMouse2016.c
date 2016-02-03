@@ -16,6 +16,7 @@
 #include "Mcu.h"
 #include "Sci.h"
 #include "Gpio.h"
+#include "Adc.h"
 
 #include "Test.h"
 
@@ -44,6 +45,7 @@ void main(void)
 	
 	McuInit();
 	SciInit();
+	AdcInit();
 	TestInit();
 	
 	setpsw_i();
@@ -51,7 +53,7 @@ void main(void)
 
 	while(1) {
 		
-		TestSci();
+		TestAdc();
 		
 	}
 }

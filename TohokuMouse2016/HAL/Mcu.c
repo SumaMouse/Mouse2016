@@ -58,7 +58,9 @@ void	McuInit(void) {
 	
 	IEN(TMR0,CMIA0) = 1;	// TMR0のCMIA0割り込み要求許可
 	IPR(TMR0,CMIA0) = 3;	// TMR0のCMIA0割り込みレベル設定
-	
+
+	/* TickTimer用 */
+	TMR1.TCCR.BYTE = 0x0C;	// PCLK/64でカウント、1カウント=1.3333us
 	
 	/* パルス出力 */
 	MSTP(MTU) = 0;			//ストップ解除

@@ -1,9 +1,10 @@
-#include	"iodefine.h"
-#include	"common.h"
+#include "iodefine.h"
+#include "common.h"
 
-#include	"Sci.h"
-#include	"Adc.h"
-#include	"Gpio.h"
+#include "Sci.h"
+#include "Adc.h"
+#include "Gpio.h"
+#include "Timer.h"
 
 
 void TestInit(void) {
@@ -54,3 +55,32 @@ void TestSci(void) {
 	}
 }
 
+void TestAdc(void) {
+	
+	u16	l_adc[8] = {0};
+	u8 t;
+	
+	SciSendString("ADC TEST!!\n\r");
+	SciSendString("CH0\tCH1\tCH2\tCH6\tCH9\tCH10\tCH11\tCH12\n\r");
+	
+	while(1) {
+		
+		l_adc[0] = AdcRead(0);
+		l_adc[1] = AdcRead(1);
+		l_adc[2] = AdcRead(2);
+		l_adc[3] = AdcRead(6);
+		l_adc[4] = AdcRead(9);
+		l_adc[5] = AdcRead(10);
+		l_adc[6] = AdcRead(11);
+		l_adc[7] = AdcRead(12);
+		
+		for (t=0;t<8;t++) {
+			SciSendDec(4, l_adc[t]);
+			SciSendString("\t");
+		}
+		SciSendString("\r");
+		
+		TimerWait1ms(1000);
+	}
+	
+}

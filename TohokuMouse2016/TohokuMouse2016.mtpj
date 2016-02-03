@@ -160,6 +160,20 @@
       <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
       <ParentItem>6c67f1c2-62ae-4432-8c87-f584dfea2d41</ParentItem>
     </Instance>
+    <Instance Guid="54793c3f-c811-42eb-b3c7-881bc1d0e01e">
+      <Name>Timer.c</Name>
+      <Type>File</Type>
+      <RelativePath>HAL\Timer.c</RelativePath>
+      <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
+      <ParentItem>6c67f1c2-62ae-4432-8c87-f584dfea2d41</ParentItem>
+    </Instance>
+    <Instance Guid="8e5bd943-9217-43f7-894e-38c5d0a841b7">
+      <Name>Timer.h</Name>
+      <Type>File</Type>
+      <RelativePath>HAL\Timer.h</RelativePath>
+      <TreeImageGuid>03cad1e8-2eb3-4cde-a8a3-982423631122</TreeImageGuid>
+      <ParentItem>6c67f1c2-62ae-4432-8c87-f584dfea2d41</ParentItem>
+    </Instance>
     <Instance Guid="123ecdf6-769c-4cd3-86de-ca5ca976a0cc">
       <Name>Test.c</Name>
       <Type>File</Type>
@@ -241,7 +255,9 @@
       <SourceItemType9>CSource</SourceItemType9>
       <SourceItemGuid10>123ecdf6-769c-4cd3-86de-ca5ca976a0cc</SourceItemGuid10>
       <SourceItemType10>CSource</SourceItemType10>
-      <SourceItemCount>11</SourceItemCount>
+      <SourceItemGuid11>54793c3f-c811-42eb-b3c7-881bc1d0e01e</SourceItemGuid11>
+      <SourceItemType11>CSource</SourceItemType11>
+      <SourceItemCount>12</SourceItemCount>
       <LastDeviceChangedCounter>0</LastDeviceChangedCounter>
     </Instance>
     <Instance Guid="9e208646-ccba-4100-a676-29b1efe6545f">
@@ -1196,6 +1212,14 @@ D_2=R_2
       <ItemAddTime>635893163692290385</ItemAddTime>
       <ItemAddTimeCount>2</ItemAddTimeCount>
     </Instance>
+    <Instance Guid="54793c3f-c811-42eb-b3c7-881bc1d0e01e">
+      <ItemAddTime>635901272062127705</ItemAddTime>
+      <ItemAddTimeCount>0</ItemAddTimeCount>
+    </Instance>
+    <Instance Guid="8e5bd943-9217-43f7-894e-38c5d0a841b7">
+      <ItemAddTime>635901272062127705</ItemAddTime>
+      <ItemAddTimeCount>1</ItemAddTimeCount>
+    </Instance>
     <Instance Guid="a7be515f-f007-45ed-9059-4e1500c0f74d">
       <TimeTagModified-SourceItem0--0>-8587493011720198478</TimeTagModified-SourceItem0--0>
       <SourceItem0-IsLockedByUser>False</SourceItem0-IsLockedByUser>
@@ -1241,6 +1265,10 @@ D_2=R_2
       <SourceItem10-IsLockedByUser>False</SourceItem10-IsLockedByUser>
       <SourceItem10-BuildingTarget-0>True</SourceItem10-BuildingTarget-0>
       <SourceItem10-IndividualCompileOption-0>False</SourceItem10-IndividualCompileOption-0>
+      <TimeTagModified-SourceItem11--0>-8587471088792648103</TimeTagModified-SourceItem11--0>
+      <SourceItem11-IsLockedByUser>False</SourceItem11-IsLockedByUser>
+      <SourceItem11-BuildingTarget-0>True</SourceItem11-BuildingTarget-0>
+      <SourceItem11-IndividualCompileOption-0>False</SourceItem11-IndividualCompileOption-0>
     </Instance>
   </Class>
   <Class Guid="44fa27c9-0aa0-4297-bd3b-2c5c5bdb8881">

@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W2.04.00 )             25-Jan-2016 11:12:29
+Renesas Optimizing Linker (W2.04.00 )             03-Feb-2016 20:14:53
 
 *** Options ***
 
@@ -15,6 +15,7 @@ Renesas Optimizing Linker (W2.04.00 )             25-Jan-2016 11:12:29
 -input=DefaultBuild\Adc.obj
 -input=DefaultBuild\Gpio.obj
 -input=DefaultBuild\Test.obj
+-input=DefaultBuild\Timer.obj
 -noprelink
 -output=DefaultBuild\TohokuMouse2016.abs
 -list=DefaultBuild\TohokuMouse2016.map
@@ -73,17 +74,17 @@ D_2
 D
                                   fffc0574  fffc057b         8   4
 P
-                                  fffc057c  fffc0b05       58a   1
+                                  fffc057c  fffc0c02       687   1
 PIntPRG
-                                  fffc0b06  fffc0c9f       19a   1
+                                  fffc0c03  fffc0d9c       19a   1
 W_1
-                                  fffc0ca0  fffc0ca0         0   1
+                                  fffc0d9d  fffc0d9d         0   1
 W_2
-                                  fffc0ca0  fffc0ca0         0   1
+                                  fffc0d9d  fffc0d9d         0   1
 W
-                                  fffc0ca0  fffc0ca0         0   1
+                                  fffc0d9d  fffc0d9d         0   1
 L
-                                  fffc0ca0  fffc0cb4        15   4
+                                  fffc0da0  fffc0de8        49   4
 $ADDR_C_FFFFFF80
                                   ffffff80  ffffff83         4   1
 $ADDR_C_FFFFFFA0
@@ -94,5 +95,5 @@ FIXEDVECT
 *** Total Section Size ***
 
 RAMDATA SECTION:  000008e1 Byte(s)
-ROMDATA SECTION:  000004d2 Byte(s)
-PROGRAM SECTION:  00000755 Byte(s)
+ROMDATA SECTION:  00000506 Byte(s)
+PROGRAM SECTION:  00000852 Byte(s)

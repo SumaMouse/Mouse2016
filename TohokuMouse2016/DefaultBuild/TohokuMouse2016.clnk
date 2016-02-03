@@ -10,6 +10,7 @@
 -input=DefaultBuild\Adc.obj
 -input=DefaultBuild\Gpio.obj
 -input=DefaultBuild\Test.obj
+-input=DefaultBuild\Timer.obj
 -noprelink
 -output=DefaultBuild\TohokuMouse2016.abs
 -list=DefaultBuild\TohokuMouse2016.map
