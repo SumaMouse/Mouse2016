@@ -5,7 +5,6 @@
 #include	"Mcu.h"
 
 static void waitClockSet(u8 count);
-static void ClearSpsr(void);
 
 void	McuInit(void) {
 
@@ -170,13 +169,5 @@ static void waitClockSet(u8 count) {	/* 1count = 0.512ms(typ.)@PCLKB=125kHz */
 	while(l_delta < count) {
 		l_delta = (u8)(TMR0.TCNT - l_start);
 	}
-}
-
-/* Clear PERF,MODF,OVRF */
-static void ClearSpsr(void) {
-	if ((RSPI1.SPSR.BYTE & 0x0D) != 0) {
-		RSPI1.SPSR.BYTE = 0xA0;
-		while((RSPI1.SPSR.BYTE & 0x0D) != 0);
-	}	
 }
 
