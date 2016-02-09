@@ -5,6 +5,7 @@
 #include	"Mcu.h"
 
 static void waitClockSet(u8 count);
+static void ClearSpsr(void);
 
 void	McuInit(void) {
 
@@ -79,6 +80,19 @@ void	McuInit(void) {
 	
 	MTU.TSTR.BIT.CST3 = 1;
 
+	/* AD変換 */
+	MSTP(S12AD) = 0;			//ストップ解除
+	
+	S12AD.ADCSR.BYTE = 0x0C;	// b0:EXTRG = 0
+								// b1:TRGE = 0
+								// b2,3:CKS = 11
+								// b4:ADIE = 0
+								// b6:ADCS = 0
+								// b7:ADST = 0
+
+	S12AD.ADCER.WORD = 0x0020;	// b5:ACE = 1
+								// b15:ADRFMT = 0
+
 	
 	/* シリアル通信 */
 	MSTP(SCI1) = 0;			//ストップ解除
@@ -86,7 +100,7 @@ void	McuInit(void) {
 	SCI1.SCR.BYTE = 0x00;	/* 内蔵クロック、送受信禁止 */
 	SCI1.SMR.BYTE = 0x00;	/* PCLKクロック、STOP1bit、パリティ無し、8Bitデータ、調歩同期式 */
 	SCI1.BRR = 77;			/* 19200bps */
-	SCI1.SSR.BYTE = 0x00;
+	SCI1.SSR.BYTE = 0xC0;
 	
 	/* 送信許可 */
 	SCI1.SCR.BYTE = 0x20;
@@ -96,27 +110,55 @@ void	McuInit(void) {
 	IR(SCI1,RXI1) = 0;
 	
 	
+	/* 簡易SPI通信 */
+	MSTP(SCI5) = 0;			//ストップ解除
+	
+	SCI5.SCR.BYTE = 0x00;	/* 内蔵クロック、送受信禁止 */
+	SCI5.SMR.BYTE = 0x80;	/* PCLKクロック、クロック同期式 */
+	SCI5.SPMR.BYTE = 0x00;	/* SS端子未使用、マスターモード、クロック反転なし、クロック遅れなし */
+	SCI5.BRR = 23;			/* 500kbps */
+	SCI5.SSR.BYTE = 0xC0;
+	
+	/* 送受信許可 */
+	SCI5.SCR.BYTE = 0x30;
+	
+	
+	
 	/* ポート初期化 */
 	PORT2.PODR.BIT.B6 = 1;		//TXD1
 	PORT2.PODR.BIT.B7 = 1;		//LED0
 	PORT3.PODR.BIT.B0 = 1;		//RXD1
 	PORT3.PODR.BIT.B1 = 1;		//LED1
+	PORTA.PODR.BIT.B1 = 1;		//SSPI CLK
+	PORTA.PODR.BIT.B3 = 0;		//SSPI DI
+	PORTA.PODR.BIT.B4 = 1;		//SSPI DO
+	PORTA.PODR.BIT.B6 = 1;		//SSPI CS
 
 	PORT2.PDR.BIT.B6 = 1;		//TXD1
 	PORT2.PDR.BIT.B7 = 1;		//LED0
 	PORT3.PDR.BIT.B0 = 0;		//RXD1
 	PORT3.PDR.BIT.B1 = 1;		//LED1
+	PORTA.PDR.BIT.B1 = 1;		//SSPI CLK
+	PORTA.PDR.BIT.B3 = 0;		//SSPI DI
+	PORTA.PDR.BIT.B4 = 1;		//SSPI DO
+	PORTA.PDR.BIT.B6 = 1;		//SSPI CS
 
 	MPC.PWPR.BIT.B0WI = 0;		//PFSWE書き込み許可
 	MPC.PWPR.BIT.PFSWE = 1;		//PFS書き込み許可
 	MPC.P14PFS.BIT.PSEL = 1;	//L_PULSE
 	MPC.P26PFS.BIT.PSEL = 10;	//TXD1
 	MPC.P30PFS.BIT.PSEL = 10;	//RDX1
+	MPC.PA1PFS.BIT.PSEL = 10;	//SSPI CLK
+	MPC.PA3PFS.BIT.PSEL = 10;	//SSPI DI
+	MPC.PA4PFS.BIT.PSEL = 10;	//SSPI DO
 	MPC.PWPR.BIT.PFSWE = 0;		//PFS書き込み禁止
 
 	PORT2.PMR.BIT.B6 = 1;		//TXD1
 	PORT3.PMR.BIT.B0 = 1;		//RXD1
 	PORT1.PMR.BIT.B4 = 1;		//L_PULSE
+	PORTA.PMR.BIT.B1 = 1;		//SSPI CLK
+	PORTA.PMR.BIT.B3 = 1;		//SSPI DI
+	PORTA.PMR.BIT.B4 = 1;		//SSPI DO
 
 
 }
@@ -129,3 +171,12 @@ static void waitClockSet(u8 count) {	/* 1count = 0.512ms(typ.)@PCLKB=125kHz */
 		l_delta = (u8)(TMR0.TCNT - l_start);
 	}
 }
+
+/* Clear PERF,MODF,OVRF */
+static void ClearSpsr(void) {
+	if ((RSPI1.SPSR.BYTE & 0x0D) != 0) {
+		RSPI1.SPSR.BYTE = 0xA0;
+		while((RSPI1.SPSR.BYTE & 0x0D) != 0);
+	}	
+}
+

@@ -5,6 +5,7 @@
 #include "Adc.h"
 #include "Gpio.h"
 #include "Timer.h"
+#include "Spi.h"
 
 
 void TestInit(void) {
@@ -84,3 +85,35 @@ void TestAdc(void) {
 	}
 	
 }
+
+void TestSpiSimple(void) {
+	
+	u8 txData = 0, rxData = 0, result = 0;
+	
+	SciSendString("SPI TEST!!\n\r");
+	SciSendString("Result\tRxData\n\r");
+
+	txData = 0x80u | 0x75u;		//WHO AM I
+	
+	while(1) {
+		
+		SpiSimpleSetCS(0);
+		
+		result = SpiSimpleTxRx(txData, &rxData);
+		result = SpiSimpleTxRx(0xFFu, &rxData);
+
+		SpiSimpleSetCS(1);
+		
+
+		SciSendHex(2, result);
+		SciSendString("\t");
+		SciSendHex(2, rxData);
+		SciSendString("\t");
+
+		SciSendString("\r");
+		
+		TimerWait1ms(1000);
+	}
+	
+}
+

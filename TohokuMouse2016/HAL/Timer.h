@@ -3,6 +3,7 @@
 
 
 void TimerWait1ms(u32 time);
+void TimerWait1_333us(u8 count);
 
 
 #endif

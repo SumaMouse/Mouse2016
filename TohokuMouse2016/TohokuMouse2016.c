@@ -17,6 +17,7 @@
 #include "Sci.h"
 #include "Gpio.h"
 #include "Adc.h"
+#include "Spi.h"
 
 #include "Test.h"
 
@@ -41,11 +42,12 @@ static u32 timer1ms = 0;
 
 void main(void)
 {
-	unsigned long timer = 0;
-	
+
 	McuInit();
 	SciInit();
 	AdcInit();
+	SpiInit();
+	
 	TestInit();
 	
 	setpsw_i();
@@ -53,7 +55,7 @@ void main(void)
 
 	while(1) {
 		
-		TestAdc();
+		TestSpiSimple();
 		
 	}
 }

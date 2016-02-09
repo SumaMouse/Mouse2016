@@ -6,17 +6,6 @@
 
 void AdcInit(void) {
 	
-	MSTP(S12AD) = 0;			//ストップ解除
-	
-	S12AD.ADCSR.BYTE = 0x0C;	// b0:EXTRG = 0
-								// b1:TRGE = 0
-								// b2,3:CKS = 11
-								// b4:ADIE = 0
-								// b6:ADCS = 0
-								// b7:ADST = 0
-
-	S12AD.ADCER.WORD = 0x0020;	//b5:ACE = 1
-								//b15:ADRFMT = 0
 }
 
 u16 AdcRead(u8 channel) {
