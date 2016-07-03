@@ -32,6 +32,8 @@
         <Path>HAL\Timer.h</Path>
         <Path>HAL\Spi.c</Path>
         <Path>HAL\Spi.h</Path>
+        <Path>HAL\Rspi.c</Path>
+        <Path>HAL\Rspi.h</Path>
       </Category>
       <Category Name="APL">
         <Path>APL\Test.c</Path>
@@ -99,6 +101,7 @@
           <Path>DefaultBuild\Test.obj</Path>
           <Path>DefaultBuild\Timer.obj</Path>
           <Path>DefaultBuild\Spi.obj</Path>
+          <Path>DefaultBuild\Rspi.obj</Path>
         </LinkOrder>
         <CommonOptions>
           <IncludePathForC>APL</IncludePathForC>

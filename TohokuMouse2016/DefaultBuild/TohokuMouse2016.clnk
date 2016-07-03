@@ -12,6 +12,7 @@
 -input=DefaultBuild\Test.obj
 -input=DefaultBuild\Timer.obj
 -input=DefaultBuild\Spi.obj
+-input=DefaultBuild\Rspi.obj
 -noprelink
 -output=DefaultBuild\TohokuMouse2016.abs
 -list=DefaultBuild\TohokuMouse2016.map

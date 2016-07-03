@@ -1,11 +1,6 @@
-update=2016/01/04 12:57:57
+update=2016/05/21 13:46:19
 version=1
 last_client=kicad
-[cvpcb]
-version=1
-NetIExt=net
-[cvpcb/libraries]
-EquName1=devcms
 [general]
 version=1
 [pcbnew]
@@ -27,25 +22,6 @@ SolderMaskMinWidth=0.000000000000
 DrawSegmentWidth=0.200000000000
 BoardOutlineThickness=0.100000000000
 ModuleOutlineThickness=0.150000000000
-[pcbnew/libraries]
-LibDir=../../2015mouseKicad/2015mouseKicad
-LibName1=sockets
-LibName2=connect
-LibName3=discret
-LibName4=pin_array
-LibName5=divers
-LibName6=smd_capacitors
-LibName7=smd_resistors
-LibName8=smd_crystal&oscillator
-LibName9=smd_dil
-LibName10=smd_transistors
-LibName11=libcms
-LibName12=display
-LibName13=led
-LibName14=dip_sockets
-LibName15=pga_sockets
-LibName16=valves
-LibName17=mouse2015p
 [eeschema]
 version=1
 LibDir=
@@ -81,3 +57,6 @@ LibName28=atmel
 LibName29=contrib
 LibName30=valves
 LibName31=MicroMouse
+[cvpcb]
+version=1
+NetIExt=net

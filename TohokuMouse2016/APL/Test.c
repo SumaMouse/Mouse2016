@@ -117,3 +117,40 @@ void TestSpiSimple(void) {
 	
 }
 
+
+void TestRspi(void) {
+	
+	u16 txData = 0, rxData = 0, result = 0;
+	
+	SciSendString("RSPI TEST!!\n\r");
+	SciSendString("Result\tRxData\n\r");
+
+	txData = (0x3F20u | 0x8000u);
+	
+	while(1) {
+		
+		RspiSetCS(0);
+		result = RspiTxRx(txData, &rxData);
+		RspiSetCS(1);
+
+		TimerWait1_333us(1);
+
+		RspiSetCS(0);
+		result = RspiTxRx(0xFFFFu, &rxData);
+		RspiSetCS(1);
+		
+
+		SciSendHex(2, result);
+		SciSendString("\t");
+		SciSendHex(4, rxData);
+		SciSendString("\t");
+
+		SciSendString("\r");
+		
+		TimerWait1ms(1000);
+	}
+	
+}
+
+
+

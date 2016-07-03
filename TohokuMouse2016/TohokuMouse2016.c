@@ -18,6 +18,7 @@
 #include "Gpio.h"
 #include "Adc.h"
 #include "Spi.h"
+#include "Rspi.h"
 
 #include "Test.h"
 
@@ -47,6 +48,7 @@ void main(void)
 	SciInit();
 	AdcInit();
 	SpiInit();
+	RspiInit();
 	
 	TestInit();
 	
@@ -55,8 +57,7 @@ void main(void)
 
 	while(1) {
 		
-		TestSpiSimple();
-		
+		TestRspi();
 	}
 }
 
@@ -70,7 +71,7 @@ void Excep_TMR0_CMIA0(void){
 	
 	timer1ms++;
 	
-	if (timer1ms > 1000) {
+	if (timer1ms >= 1000) {
 		t ^= 1;
 		GpioWrteLed1(t);
 

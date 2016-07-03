@@ -1,4 +1,4 @@
-(module C_0402 (layer F.Cu) (tedit 5415D599)
+(module Chip_1005 (layer F.Cu) (tedit 5415D599)
   (descr "Capacitor SMD 0402, reflow soldering, AVX (see smccp.pdf)")
   (tags "capacitor 0402")
   (attr smd)
