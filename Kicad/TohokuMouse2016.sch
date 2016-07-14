@@ -1348,13 +1348,13 @@ Entry Wire Line
 Text Label 7500 4750 0    60   ~ 0
 FL_ON
 Text Label 7500 4850 0    60   ~ 0
-FR_ON
+LS_ON
 Entry Wire Line
 	7950 3950 8050 4050
 Entry Wire Line
 	7950 3850 8050 3950
 Text Label 7500 3950 0    60   ~ 0
-LS_ON
+FR_ON
 Text Label 7500 3850 0    60   ~ 0
 RS_ON
 $Comp
@@ -1603,7 +1603,7 @@ F 1 "LED" H 6700 9700 50  0000 C CNN
 F 2 "MicroMouse:Chip_2012" H 6700 9800 60  0001 C CNN
 F 3 "~" H 6700 9800 60  0000 C CNN
 	1    6700 9800
-	0    1    1    0   
+	0    -1   -1   0   
 $EndComp
 $Comp
 L R-RESCUE-TohokuMouse2016 R23
@@ -1614,17 +1614,6 @@ F 1 "470" V 6707 9151 40  0000 C CNN
 F 2 "MicroMouse:Chip_1005" V 6630 9150 30  0001 C CNN
 F 3 "~" H 6700 9150 30  0000 C CNN
 	1    6700 9150
-	1    0    0    -1  
-$EndComp
-$Comp
-L VCC #PWR049
-U 1 1 56829635
-P 6700 8700
-F 0 "#PWR049" H 6700 8800 30  0001 C CNN
-F 1 "VCC" H 6700 8800 30  0000 C CNN
-F 2 "" H 6700 8700 60  0000 C CNN
-F 3 "" H 6700 8700 60  0000 C CNN
-	1    6700 8700
 	1    0    0    -1  
 $EndComp
 Entry Wire Line
@@ -1640,7 +1629,7 @@ F 1 "LED" H 7300 9700 50  0000 C CNN
 F 2 "MicroMouse:Chip_2012" H 7300 9800 60  0001 C CNN
 F 3 "~" H 7300 9800 60  0000 C CNN
 	1    7300 9800
-	0    1    1    0   
+	0    -1   -1   0   
 $EndComp
 $Comp
 L R-RESCUE-TohokuMouse2016 R25
@@ -1651,17 +1640,6 @@ F 1 "470" V 7307 9151 40  0000 C CNN
 F 2 "MicroMouse:Chip_1005" V 7230 9150 30  0001 C CNN
 F 3 "~" H 7300 9150 30  0000 C CNN
 	1    7300 9150
-	1    0    0    -1  
-$EndComp
-$Comp
-L VCC #PWR050
-U 1 1 56829A91
-P 7300 8700
-F 0 "#PWR050" H 7300 8800 30  0001 C CNN
-F 1 "VCC" H 7300 8800 30  0000 C CNN
-F 2 "" H 7300 8700 60  0000 C CNN
-F 3 "" H 7300 8700 60  0000 C CNN
-	1    7300 8700
 	1    0    0    -1  
 $EndComp
 Entry Wire Line
@@ -1685,7 +1663,7 @@ F 1 "LED" H 7900 9700 50  0000 C CNN
 F 2 "MicroMouse:Chip_2012" H 7900 9800 60  0001 C CNN
 F 3 "~" H 7900 9800 60  0000 C CNN
 	1    7900 9800
-	0    1    1    0   
+	0    -1   -1   0   
 $EndComp
 $Comp
 L R-RESCUE-TohokuMouse2016 R27
@@ -1696,17 +1674,6 @@ F 1 "470" V 7907 9151 40  0000 C CNN
 F 2 "MicroMouse:Chip_1005" V 7830 9150 30  0001 C CNN
 F 3 "~" H 7900 9150 30  0000 C CNN
 	1    7900 9150
-	1    0    0    -1  
-$EndComp
-$Comp
-L VCC #PWR051
-U 1 1 5682A2C5
-P 7900 8700
-F 0 "#PWR051" H 7900 8800 30  0001 C CNN
-F 1 "VCC" H 7900 8800 30  0000 C CNN
-F 2 "" H 7900 8700 60  0000 C CNN
-F 3 "" H 7900 8700 60  0000 C CNN
-	1    7900 8700
 	1    0    0    -1  
 $EndComp
 Entry Wire Line
@@ -2510,4 +2477,49 @@ Wire Wire Line
 Connection ~ 11350 1800
 Text Label 1850 900  0    60   ~ 0
 batt_con
+$Comp
+L GND-RESCUE-TohokuMouse2016 #PWR?
+U 1 1 578774F9
+P 6850 8750
+F 0 "#PWR?" H 6850 8750 30  0001 C CNN
+F 1 "GND" H 6850 8680 30  0001 C CNN
+F 2 "" H 6850 8750 60  0000 C CNN
+F 3 "" H 6850 8750 60  0000 C CNN
+	1    6850 8750
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND-RESCUE-TohokuMouse2016 #PWR?
+U 1 1 5787771F
+P 7450 8750
+F 0 "#PWR?" H 7450 8750 30  0001 C CNN
+F 1 "GND" H 7450 8680 30  0001 C CNN
+F 2 "" H 7450 8750 60  0000 C CNN
+F 3 "" H 7450 8750 60  0000 C CNN
+	1    7450 8750
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND-RESCUE-TohokuMouse2016 #PWR?
+U 1 1 57877811
+P 8050 8750
+F 0 "#PWR?" H 8050 8750 30  0001 C CNN
+F 1 "GND" H 8050 8680 30  0001 C CNN
+F 2 "" H 8050 8750 60  0000 C CNN
+F 3 "" H 8050 8750 60  0000 C CNN
+	1    8050 8750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6700 8700 6850 8700
+Wire Wire Line
+	6850 8700 6850 8750
+Wire Wire Line
+	7300 8700 7450 8700
+Wire Wire Line
+	7450 8700 7450 8750
+Wire Wire Line
+	7900 8700 8050 8700
+Wire Wire Line
+	8050 8700 8050 8750
 $EndSCHEMATC
