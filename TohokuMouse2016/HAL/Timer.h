@@ -2,8 +2,12 @@
 #define	__TIMER_H__
 
 
-void TimerWait1ms(u32 time);
-void TimerWait1_333us(u8 count);
+extern void TimerWait1ms(u32 time);
+extern void TimerWait1_333us(u8 count);
+extern void StartMotorTimers(void);
+extern void StopMotorTimers(void);
+extern void SetRightMotorDutyReg(u16 value);
+extern void SetLeftMotorDutyReg(u16 value);
 
 
 #endif

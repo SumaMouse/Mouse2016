@@ -4,6 +4,7 @@
 #include "Timer.h"
 
 
+#define		MOTOR_DRIVE_FREQ_TO_REGSTER		(1000)
 
 
 void TimerWait1ms(u32 time) {
@@ -28,5 +29,25 @@ void TimerWait1_333us(u8 count) {
 	while(l_delta < count) {
 		l_delta = (u8)(TMR1.TCNT - l_start);
 	}
+}
+
+void StartMotorTimers(void) {
+	
+	MTU.TSTR.BYTE |= 0xC0u;
+	
+}
+
+void StopMotorTimers(void) {
+	
+	MTU.TSTR.BYTE &= 0x3Fu;
+	
+}
+
+void SetRightMotorDutyReg(u16 value) {
+	MTU3.TGRB = value;
+}
+
+void SetLeftMotorDutyReg(u16 value) {
+	MTU4.TGRB = value;
 }
 

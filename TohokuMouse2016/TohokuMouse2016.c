@@ -54,10 +54,13 @@ void main(void)
 	
 	setpsw_i();
 
+	GpioWrteLed0(TRUE);
+	GpioWrteLed1(TRUE);
+	GpioWrteLed2(TRUE);
 
 	while(1) {
 		
-		TestRspi();
+		TestMotor();
 	}
 }
 
@@ -72,6 +75,9 @@ void Excep_TMR0_CMIA0(void){
 	timer1ms++;
 	
 	if (timer1ms >= 1000) {
+
+		GpioWrteLed0(t);
+		GpioWrteLed2(t);
 		t ^= 1;
 		GpioWrteLed1(t);
 

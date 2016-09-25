@@ -153,4 +153,63 @@ void TestRspi(void) {
 }
 
 
+void TestMotor(void) {
+
+	SciSendString("MOTOR TEST!!\n\r");
+
+	SetRightMotorDutyReg(0);
+	SetLeftMotorDutyReg(0);
+
+	GpioWrteRightMotorCw(0);
+	GpioWrteLeftMotorCw(0);
+
+	GpioWrteMotorSleep(1);
+
+	StartMotorTimers();
+	
+	while(1) {
+		
+		SciSendString("MOTOR Right CW ON!\n\r");
+		SetRightMotorDutyReg(100);
+		TimerWait1ms(1000);
+
+		SciSendString("MOTOR Right OFF!\n\r");
+		SetRightMotorDutyReg(0);
+		TimerWait1ms(1000);
+
+		GpioWrteRightMotorCw(1);
+
+		SciSendString("MOTOR Right CCW ON!\n\r");
+		SetRightMotorDutyReg(100);
+		TimerWait1ms(1000);
+
+		SciSendString("MOTOR Right OFF!\n\r");
+		SetRightMotorDutyReg(0);
+		TimerWait1ms(1000);
+
+		GpioWrteRightMotorCw(0);
+
+
+		SciSendString("MOTOR Left CW ON!\n\r");
+		SetLeftMotorDutyReg(100);
+		TimerWait1ms(1000);
+		
+		SciSendString("MOTOR Left OFF!\n\r");
+		SetLeftMotorDutyReg(0);
+		TimerWait1ms(1000);
+
+		GpioWrteLeftMotorCw(1);
+		
+		SciSendString("MOTOR Left CCW ON!\n\r");
+		SetLeftMotorDutyReg(100);
+		TimerWait1ms(1000);
+		
+		SciSendString("MOTOR Left OFF!\n\r");
+		SetLeftMotorDutyReg(0);
+		TimerWait1ms(1000);
+		
+		GpioWrteLeftMotorCw(0);
+	}
+
+}
 

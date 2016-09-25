@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W2.04.00 )             27-Mar-2016 10:10:35
+Renesas Optimizing Linker (W2.04.00 )             25-Sep-2016 15:00:13
 
 *** Options ***
 
@@ -76,17 +76,17 @@ D_2
 D
                                   fffc0574  fffc057b         8   4
 P
-                                  fffc057c  fffc0ed6       95b   1
+                                  fffc057c  fffc1091       b16   1
 PIntPRG
-                                  fffc0ed7  fffc1070       19a   1
+                                  fffc1092  fffc122b       19a   1
 W_1
-                                  fffc1071  fffc1071         0   1
+                                  fffc122c  fffc122c         0   1
 W_2
-                                  fffc1071  fffc1071         0   1
+                                  fffc122c  fffc122c         0   1
 W
-                                  fffc1071  fffc1071         0   1
+                                  fffc122c  fffc122c         0   1
 L
-                                  fffc1074  fffc10e7        74   4
+                                  fffc122c  fffc1327        fc   4
 $ADDR_C_FFFFFF80
                                   ffffff80  ffffff83         4   1
 $ADDR_C_FFFFFFA0
@@ -97,5 +97,5 @@ FIXEDVECT
 *** Total Section Size ***
 
 RAMDATA SECTION:  000008e1 Byte(s)
-ROMDATA SECTION:  00000531 Byte(s)
-PROGRAM SECTION:  00000b26 Byte(s)
+ROMDATA SECTION:  000005b9 Byte(s)
+PROGRAM SECTION:  00000ce1 Byte(s)

@@ -3,6 +3,8 @@
 
 extern void GpioWrteLed0(bool isOn);
 extern void GpioWrteLed1(bool isOn);
+extern void GpioWrteLed2(bool isOn);
+extern void GpioWrteMotorSleep(bool isOn);
 
 #endif
 

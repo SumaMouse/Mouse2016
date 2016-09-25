@@ -5,6 +5,7 @@ extern void TestLed(void);
 extern void TestSci(void);
 extern void TestAdc(void);
 extern void TestSpiSimple(void);
+extern void TestMotor(void);
 
 
 #endif
