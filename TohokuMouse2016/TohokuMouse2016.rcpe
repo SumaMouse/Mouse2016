@@ -38,6 +38,20 @@
       <Category Name="APL">
         <Path>APL\Test.c</Path>
         <Path>APL\Test.h</Path>
+        <Path>APL\Utility.c</Path>
+        <Path>APL\Utility.h</Path>
+        <Path>APL\AS5055.c</Path>
+        <Path>APL\AS5055.h</Path>
+        <Path>APL\PushSwitch.h</Path>
+        <Path>APL\PushSwitch.c</Path>
+        <Path>APL\Battery.h</Path>
+        <Path>APL\Battery.c</Path>
+        <Path>APL\AplMain.c</Path>
+        <Path>APL\AplMain.h</Path>
+        <Path>APL\WallSensor.c</Path>
+        <Path>APL\WallSensor.h</Path>
+        <Path>APL\Gyro.c</Path>
+        <Path>APL\Gyro.h</Path>
       </Category>
     </Files>
     <Device Series="RX">R5F5631MCxFL</Device>
@@ -102,6 +116,13 @@
           <Path>DefaultBuild\Timer.obj</Path>
           <Path>DefaultBuild\Spi.obj</Path>
           <Path>DefaultBuild\Rspi.obj</Path>
+          <Path>DefaultBuild\Utility.obj</Path>
+          <Path>DefaultBuild\AS5055.obj</Path>
+          <Path>DefaultBuild\PushSwitch.obj</Path>
+          <Path>DefaultBuild\Battery.obj</Path>
+          <Path>DefaultBuild\AplMain.obj</Path>
+          <Path>DefaultBuild\WallSensor.obj</Path>
+          <Path>DefaultBuild\Gyro.obj</Path>
         </LinkOrder>
         <CommonOptions>
           <IncludePathForC>APL</IncludePathForC>

@@ -1,4 +1,4 @@
-Renesas Optimizing Linker (W2.04.00 )             25-Sep-2016 15:00:13
+Renesas Optimizing Linker (W2.04.00 )             02-Nov-2016 23:13:42
 
 *** Options ***
 
@@ -18,6 +18,13 @@ Renesas Optimizing Linker (W2.04.00 )             25-Sep-2016 15:00:13
 -input=DefaultBuild\Timer.obj
 -input=DefaultBuild\Spi.obj
 -input=DefaultBuild\Rspi.obj
+-input=DefaultBuild\Utility.obj
+-input=DefaultBuild\AS5055.obj
+-input=DefaultBuild\PushSwitch.obj
+-input=DefaultBuild\Battery.obj
+-input=DefaultBuild\AplMain.obj
+-input=DefaultBuild\WallSensor.obj
+-input=DefaultBuild\Gyro.obj
 -noprelink
 -output=DefaultBuild\TohokuMouse2016.abs
 -list=DefaultBuild\TohokuMouse2016.map
@@ -38,19 +45,19 @@ SECTION                            START      END         SIZE   ALIGN
 B_1
                                   00000004  000000cb        c8   1
 R_1
-                                  000000cc  000000cc         1   1
+                                  000000cc  000000d3         8   1
 B_2
-                                  000000cd  000000cd         0   1
+                                  000000d4  000000d4         0   1
 R_2
-                                  000000cd  000000cd         0   1
+                                  000000d4  000000d4         0   1
 B
-                                  000000d0  000004df       410   4
+                                  000000d4  000004fb       428   4
 R
-                                  000004e0  000004e7         8   4
+                                  000004fc  00000547        4c   4
 SU
-                                  000004e8  000005e7       100   4
+                                  00000548  00000647       100   4
 SI
-                                  000005e8  000008e7       300   4
+                                  00000648  00000947       300   4
 PResetPRG
                                   fffc0000  fffc0030        31   1
 C_1
@@ -70,23 +77,23 @@ C$VTBL
 C$VECT
                                   fffc0170  fffc056f       400   4
 D_1
-                                  fffc0570  fffc0570         1   1
+                                  fffc0570  fffc0577         8   1
 D_2
-                                  fffc0571  fffc0571         0   1
+                                  fffc0578  fffc0578         0   1
 D
-                                  fffc0574  fffc057b         8   4
+                                  fffc0578  fffc05c3        4c   4
 P
-                                  fffc057c  fffc1091       b16   1
+                                  fffc05c4  fffc1987      13c4   1
 PIntPRG
-                                  fffc1092  fffc122b       19a   1
+                                  fffc1988  fffc1b21       19a   1
 W_1
-                                  fffc122c  fffc122c         0   1
+                                  fffc1b22  fffc1b22         0   1
 W_2
-                                  fffc122c  fffc122c         0   1
+                                  fffc1b22  fffc1b22         0   1
 W
-                                  fffc122c  fffc122c         0   1
+                                  fffc1b22  fffc1b22         0   1
 L
-                                  fffc122c  fffc1327        fc   4
+                                  fffc1b24  fffc1c6d       14a   4
 $ADDR_C_FFFFFF80
                                   ffffff80  ffffff83         4   1
 $ADDR_C_FFFFFFA0
@@ -96,6 +103,6 @@ FIXEDVECT
 
 *** Total Section Size ***
 
-RAMDATA SECTION:  000008e1 Byte(s)
-ROMDATA SECTION:  000005b9 Byte(s)
-PROGRAM SECTION:  00000ce1 Byte(s)
+RAMDATA SECTION:  00000944 Byte(s)
+ROMDATA SECTION:  00000652 Byte(s)
+PROGRAM SECTION:  0000158f Byte(s)

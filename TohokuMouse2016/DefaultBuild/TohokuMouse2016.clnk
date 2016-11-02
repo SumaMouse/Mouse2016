@@ -13,6 +13,13 @@
 -input=DefaultBuild\Timer.obj
 -input=DefaultBuild\Spi.obj
 -input=DefaultBuild\Rspi.obj
+-input=DefaultBuild\Utility.obj
+-input=DefaultBuild\AS5055.obj
+-input=DefaultBuild\PushSwitch.obj
+-input=DefaultBuild\Battery.obj
+-input=DefaultBuild\AplMain.obj
+-input=DefaultBuild\WallSensor.obj
+-input=DefaultBuild\Gyro.obj
 -noprelink
 -output=DefaultBuild\TohokuMouse2016.abs
 -list=DefaultBuild\TohokuMouse2016.map

@@ -109,7 +109,11 @@ u16 RspiTxRx(u16 txData, u16* rxData) {
 	return err;
 }
 
-void RspiSetCS(u16 level) {
-	PORTC.PODR.BIT.B4 = level;
+void RspiSetSS(u8 ch, u16 level) {
+	if (ch == 0) {
+		PORTB.PODR.BIT.B5 = level;	/* RIGHT */
+	} else {
+		PORTC.PODR.BIT.B4 = level;	/* LEFT */
+	}
 }
 

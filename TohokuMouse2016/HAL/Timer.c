@@ -31,6 +31,10 @@ void TimerWait1_333us(u8 count) {
 	}
 }
 
+u16 Get1usTimer(void) {
+	return TMR1.TCNT;
+}
+
 void StartMotorTimers(void) {
 	
 	MTU.TSTR.BYTE |= 0xC0u;

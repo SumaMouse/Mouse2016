@@ -17,7 +17,7 @@ u16 AdcRead(u8 channel) {
 	S12AD.ADANS0.WORD = (u16)(1ul << channel);
 	
 	/* ADC Start */
-	S12AD.ADCSR.BIT.ADST = 1;	
+	S12AD.ADCSR.BIT.ADST = 1;
 	
 	while(S12AD.ADCSR.BIT.ADST);
 	

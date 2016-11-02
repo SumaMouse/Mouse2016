@@ -62,3 +62,56 @@ void GpioWrteLeftMotorCw(bool isCw) {
 	
 }
 
+void GpioWrteWallSensFrOn(bool isOn) {
+	
+	u8 level = 0;
+
+	if (isOn == TRUE) {
+		level = 1;
+	}
+	PORTC.PODR.BIT.B6 = level;
+}
+
+void GpioWrteWallSensFlOn(bool isOn) {
+	
+	u8 level = 0;
+
+	if (isOn == TRUE) {
+		level = 1;
+	}
+	PORT1.PODR.BIT.B6 = level;
+}
+
+void GpioWrteWallSensRsOn(bool isOn) {
+	
+	u8 level = 0;
+
+	if (isOn == TRUE) {
+		level = 1;
+	}
+	PORTC.PODR.BIT.B5 = level;
+}
+
+void GpioWrteWallSensLsOn(bool isOn) {
+	
+	u8 level = 0;
+
+	if (isOn == TRUE) {
+		level = 1;
+	}
+	PORT1.PODR.BIT.B7 = level;
+}
+
+
+u8 GpioIsPushSwitchOn(void) {
+	u8 isOn = 0;
+	
+	if (PORT3.PIDR.BIT.B5 == 0) {
+		isOn = 0;
+	}
+	
+	return isOn;
+}
+
+
+

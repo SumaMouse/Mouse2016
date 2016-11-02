@@ -7,6 +7,10 @@ extern void TestAdc(void);
 extern void TestSpiSimple(void);
 extern void TestMotor(void);
 
+extern void TestAS5055(void);
+
+extern void TestWallSensor(void);
+extern void GyroSensorTest(void);
 
 #endif
 

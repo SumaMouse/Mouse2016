@@ -10,17 +10,10 @@
 /***********************************************************************/
 
 #include <machine.h>
-#include "iodefine.h"
 #include "Common.h"
+#include "iodefine.h"
 
-#include "Mcu.h"
-#include "Sci.h"
-#include "Gpio.h"
-#include "Adc.h"
-#include "Spi.h"
-#include "Rspi.h"
-
-#include "Test.h"
+#include "AplMain.h"
 
 //#include "typedefine.h"
 #ifdef __cplusplus
@@ -39,50 +32,22 @@ void abort(void);
 #pragma interrupt (Excep_TMR0_CMIA0(vect=170))
 
 
-static u32 timer1ms = 0;
-
 void main(void)
 {
+	AplMainInit();
 
-	McuInit();
-	SciInit();
-	AdcInit();
-	SpiInit();
-	RspiInit();
-	
-	TestInit();
-	
 	setpsw_i();
 
-	GpioWrteLed0(TRUE);
-	GpioWrteLed1(TRUE);
-	GpioWrteLed2(TRUE);
-
-	while(1) {
-		
-		TestMotor();
-	}
+	AplMain();
+	
 }
 
 void Excep_TMR0_CMIA0(void){
 	
-	static u8 t = 0;
-	
 	IR(TMR0,CMIA0) = 0;
 	
-	SciSendPeriodic();
+	Apl1msTask();
 	
-	timer1ms++;
-	
-	if (timer1ms >= 1000) {
-
-		GpioWrteLed0(t);
-		GpioWrteLed2(t);
-		t ^= 1;
-		GpioWrteLed1(t);
-
-		timer1ms = 0;
-	}
 }
 
 

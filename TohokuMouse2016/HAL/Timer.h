@@ -4,6 +4,7 @@
 
 extern void TimerWait1ms(u32 time);
 extern void TimerWait1_333us(u8 count);
+extern u16 Get1usTimer(void);
 extern void StartMotorTimers(void);
 extern void StopMotorTimers(void);
 extern void SetRightMotorDutyReg(u16 value);
