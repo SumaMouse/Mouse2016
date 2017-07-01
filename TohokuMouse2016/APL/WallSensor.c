@@ -7,6 +7,10 @@
 
 #include "WallSensor.h"
 
+
+#define	WALL_SENS_START_DATA		(1000)
+
+
 static s16	WallSensRs;
 static s16	WallSensFr;
 static s16	WallSensFl;
@@ -69,14 +73,31 @@ void ReadWallSensors(void) {
 
 void WaitSensorHandStart(void) {
 	
-	TimerWait1ms(2000);
-	
 	/* àÍíUOFFÇåüèoÇµÇƒÇ©ÇÁ */
 	while (1) {
-		if ((WallSensFr < 100) && (WallSensFl < 100)) break;
+		if (WallSensFr < WALL_SENS_START_DATA) {
+			break;
+		}
+		
+		GpioWrteLed2(TRUE);
+		TimerWait1ms(100);
+		GpioWrteLed2(FALSE);
+		TimerWait1ms(200);
+
 	}
 
 	while (1) {
-		if ((WallSensFr > 100) && (WallSensFl > 100)) break;
+		if (WallSensFr > WALL_SENS_START_DATA) {
+			break;
+		}
+
+		GpioWrteLed2(TRUE);
+		TimerWait1ms(10);
+		GpioWrteLed2(FALSE);
+		TimerWait1ms(100);
 	}
+
+	TimerWait1ms(1000);
 }
+
+

@@ -26,6 +26,10 @@ void ReadPushSwitch(void) {
 	OldSw[0] = isOn;
 }
 
+u8 IsSwitchOn(void) {
+	return IsPushSwOn;
+}
+
 u8 MakeSwitchOnEvent(void) {
 	
 	static u8 OldSw = FALSE;

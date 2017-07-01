@@ -14,6 +14,7 @@ static	u16	batteryBuffer[10] = {0};
 static	u16	lowBatteryDetectTimer1ms = 0;
 static	u16 battery12ad;
 
+
 u8 ReadBatteryStatus(void) {
 	
 	u32 ave;
@@ -58,6 +59,8 @@ u8 ReadBatteryStatus(void) {
 	
 	if (lowBatteryDetectTimer1ms > 1000u) {
 		isLowVoltage = 1;
+		
+		LowBattery();
 	}
 	
 	return isLowVoltage;
@@ -69,5 +72,26 @@ u16 GetBatteryVoltage1mv(void) {
 
 u16 GetBattery12ad(void) {
 	return battery12ad;
+}
+
+void LowBattery(void) {
+	
+	u32 count;
+	
+	GpioWrteLed0(FALSE);
+	GpioWrteLed1(FALSE);
+	GpioWrteLed2(FALSE);
+	
+	while(1) {
+		
+		GpioWrteLed0(TRUE);
+		GpioWrteLed2(FALSE);
+		for(count=0;count<0xFFFFFF;count++);
+
+		GpioWrteLed0(FALSE);
+		GpioWrteLed2(TRUE);
+		for(count=0;count<0xFFFFFF;count++);
+	}
+	
 }
 

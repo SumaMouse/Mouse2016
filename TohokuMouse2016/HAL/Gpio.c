@@ -53,10 +53,10 @@ void GpioWrteRightMotorCw(bool isCw) {
 
 void GpioWrteLeftMotorCw(bool isCw) {
 	
-	u8 level = 0;
+	u8 level = 1;
 
 	if (isCw == TRUE) {
-		level = 1;
+		level = 0;
 	}
 	PORTB.PODR.BIT.B1 = level;
 	
@@ -107,7 +107,7 @@ u8 GpioIsPushSwitchOn(void) {
 	u8 isOn = 0;
 	
 	if (PORT3.PIDR.BIT.B5 == 0) {
-		isOn = 0;
+		isOn = 1;
 	}
 	
 	return isOn;

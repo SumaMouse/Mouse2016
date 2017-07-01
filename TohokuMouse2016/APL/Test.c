@@ -6,11 +6,23 @@
 #include "Gpio.h"
 #include "Timer.h"
 #include "Spi.h"
+#include "Rspi.h"
 #include "AS5055.h"
 #include "Battery.h"
 #include "Gyro.h"
+#include "RotaryEncoder.h"
+#include "Utility.h"
+#include "WallSensor.h"
+#include "Motor.h"
+#include "PushSwitch.h"
 
 #include "Test.h"
+
+
+
+static void WaitDrvComEnd(void);
+
+
 
 void TestInit(void) {
 	
@@ -200,24 +212,28 @@ void TestRspi(void) {
 
 void TestMotor(void) {
 
+	StartMotorDirectTestMode();
+
 	SciSendString("MOTOR TEST!!\n\r");
 
 	SetRightMotorDutyReg(0);
 	SetLeftMotorDutyReg(0);
 
 	GpioWrteRightMotorCw(1);
-	GpioWrteLeftMotorCw(1);
+	GpioWrteLeftMotorCw(0);
 
 	GpioWrteMotorSleep(1);
 
 	StartMotorTimers();
 
-	TimerWait1ms(5000);
-	
 	while(1) {
 
-		SetRightMotorDutyReg(100);
-		SetLeftMotorDutyReg(100);
+#if 0
+
+		TimerWait1ms(5000);
+		
+		SetRightMotorDutyReg(150);
+		SetLeftMotorDutyReg(150);
 		TimerWait1ms(3000);
 
 		SetRightMotorDutyReg(0);
@@ -228,7 +244,10 @@ void TestMotor(void) {
 		
 		while(1);
 
-#if 0		
+#else
+
+		GpioWrteRightMotorCw(1);
+		
 		SciSendString("MOTOR Right CW ON!\n\r");
 		SetRightMotorDutyReg(100);
 		TimerWait1ms(1000);
@@ -237,7 +256,8 @@ void TestMotor(void) {
 		SetRightMotorDutyReg(0);
 		TimerWait1ms(1000);
 
-		GpioWrteRightMotorCw(1);
+
+		GpioWrteRightMotorCw(0);
 
 		SciSendString("MOTOR Right CCW ON!\n\r");
 		SetRightMotorDutyReg(100);
@@ -247,8 +267,8 @@ void TestMotor(void) {
 		SetRightMotorDutyReg(0);
 		TimerWait1ms(1000);
 
-		GpioWrteRightMotorCw(0);
 
+		GpioWrteLeftMotorCw(1);
 
 		SciSendString("MOTOR Left CW ON!\n\r");
 		SetLeftMotorDutyReg(100);
@@ -258,7 +278,8 @@ void TestMotor(void) {
 		SetLeftMotorDutyReg(0);
 		TimerWait1ms(1000);
 
-		GpioWrteLeftMotorCw(1);
+
+		GpioWrteLeftMotorCw(0);
 		
 		SciSendString("MOTOR Left CCW ON!\n\r");
 		SetLeftMotorDutyReg(100);
@@ -268,11 +289,12 @@ void TestMotor(void) {
 		SetLeftMotorDutyReg(0);
 		TimerWait1ms(1000);
 		
-		GpioWrteLeftMotorCw(0);
 #endif
 
 
 	}
+
+	StopMotorDirectTestMode();
 
 }
 
@@ -280,15 +302,21 @@ void TestAS5055(void) {
 	
 	u16 errorStatus[2] = {0};
 	u16 angular12bit[2] = {0};
+	s32 encCount[2] = {0};
+	float distance[2] = {0};
 	
-	SciSendString("AS5055 TEST!!\n\r");
-	SciSendString("Angluar\tDataErrorStatus\n\r");
+	SciSendString("\n\rAS5055 TEST!!\n\r");
+	SciSendString("Left\tLErr\tRight\tRErr\tLDist\tRDist\tLmm\tRmm\n\r");
+	TimerWait1ms(200);
 	
 	
 	while(1) {
 		
-		AS5055ReadAngularData(0, &angular12bit[0]);
-		AS5055ReadErrorStatus(0, &errorStatus[0]);
+		GetEncoderRawPosition(&angular12bit[0], &angular12bit[1]);
+		GetEncoderRawErr(&errorStatus[0], &errorStatus[1]);
+		GetEncoderCount(&encCount[0], &encCount[1]);
+		
+		GetDistanceForTest(&distance[0], &distance[1]);
 		
 		SciSendHex(4,angular12bit[0]);
 		SciSendString("\t");
@@ -296,17 +324,26 @@ void TestAS5055(void) {
 
 		SciSendString("\t");
 
-		AS5055ReadAngularData(1, &angular12bit[1]);
-		AS5055ReadErrorStatus(1, &errorStatus[1]);
-		
 		SciSendHex(4,angular12bit[1]);
 		SciSendString("\t");
 		SciSendHex(4,errorStatus[1]);
+		SciSendString("\t");
 
+		SciSendDec(5,encCount[0]);
+		SciSendString(" ");
+		SciSendString("\t");
+		SciSendDec(5,encCount[1]);
+		SciSendString(" ");
+
+		SciSendDec(5,(u32)(distance[0]));
+		SciSendString(" ");
+		SciSendString("\t");
+		SciSendDec(5,(u32)(distance[1]));
+		SciSendString(" ");
 		
-		SciSendString("\n\r");
+		SciSendString("\r");
 		
-		TimerWait1ms(1000);
+		TimerWait1ms(200);
 		
 	}
 	
@@ -324,13 +361,13 @@ void TestWallSensor(void) {
 	while(1) {
 		
 		SciSendString(" ");
-		SciSendDec(4, (u16)GetWallSensor(SIDE_LEFT));
+		SciSendDec(4, (s32)GetWallSensor(SIDE_LEFT));
 		SciSendString("\t");
-		SciSendDec(4, (u16)GetWallSensor(FRONT_LEFT));
+		SciSendDec(4, (s32)GetWallSensor(FRONT_LEFT));
 		SciSendString("\t");
-		SciSendDec(4, (u16)GetWallSensor(FRONT_RIGHT));
+		SciSendDec(4, (s32)GetWallSensor(FRONT_RIGHT));
 		SciSendString("\t");
-		SciSendDec(4, (u16)GetWallSensor(SIDE_RIGHT));
+		SciSendDec(4, (s32)GetWallSensor(SIDE_RIGHT));
 		SciSendString("\t ");
 
 		battery1mv = GetBatteryVoltage1mv();
@@ -343,11 +380,15 @@ void TestWallSensor(void) {
 
 		SciSendString("\r");
 		
-		TimerWait1ms(500);
+		TimerWait1ms(200);
 	}
 	
 }
 
+/* 
+	ジャイロセンサは、テスト開始時に静止状態で基準値を測定します。
+	テストを開始したら2秒以内にマウスを静止状態にすること。
+*/
 void GyroSensorTest(void) {
 
 	float gyro = 0.0f;
@@ -355,7 +396,7 @@ void GyroSensorTest(void) {
 	float ref = 0.0f;
 
 	SciSendString("Gyro Ref Check...\n\r");
-	TimerWait1ms(2000);
+	TimerWait1ms(2000);		/* 静止状態開始までの猶予時間 */
 	UpdateGyroRef();
 
 	SciSendString("Gyro Sensor Test.\n\r");
@@ -378,5 +419,63 @@ void GyroSensorTest(void) {
 		
 	}
 
+}
+
+
+void TestDrive(u8 mode) {
+	
+	
+	/* スタート待ち */
+	WaitSensorHandStart();
+
+
+	/* ジャイロ基準値測定 */
+	UpdateGyroRef();
+	
+	GpioWrteLed1(TRUE);
+
+	
+	switch (mode) {
+		case 0 :	/* 直進 */
+			SetMoveCommand(DRV_MODE_STRAIGHT, 0.2f, STOP_SPD, 2.0f, (2.0f*90.0f), 0.0f, 0.0f, 0.0f);
+			WaitDrvComEnd();
+			
+			break;
+
+		case 1 :	/* 90°左超信地旋回 */
+			SetMoveCommand(DRV_MODE_TURN_L, 0.0f, 0.0f, 0.0f, 0.0f, 2000.0f, 360.0f, 90.0f);
+			WaitDrvComEnd();
+			break;
+
+		case 255 : /* 宴会芸 */
+
+			SetMoveCommand(DRV_MODE_PAUSE, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+			
+			while(1);
+			
+			break;
+		default:
+			break;
+	}
+
+	GpioWrteLed1(FALSE);
+
+	
+	WaitSensorHandStart();
+	OutputMotorLogData();
+	
+	while(1);
+	
+}
+
+static void WaitDrvComEnd(void) {
+	u8 pushSw = FALSE;
+	
+	while(IsDrvComExecuteBusy() == TRUE) {
+		pushSw = MakeSwitchOnEvent();
+		if(pushSw == TRUE) {
+			break;
+		}
+	}
 }
 

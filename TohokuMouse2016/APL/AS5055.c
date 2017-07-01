@@ -3,7 +3,8 @@
 
 #include "Gpio.h"
 #include "Timer.h"
-#include "Spi.h"
+#include "Rspi.h"
+#include "Utility.h"
 
 #include "AS5055.h"
 

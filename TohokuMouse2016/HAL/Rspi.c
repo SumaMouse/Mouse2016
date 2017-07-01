@@ -1,8 +1,9 @@
 #include	"iodefine.h"
 #include	"common.h"
 
-#include	"spi.h"
-#include	"timer.h"
+#include	"Rspi.h"
+#include	"Timer.h"
+#include	"Utility.h"
 
 /* Clear PERF,MODF,OVRF */
 static void ClearSpsr(void) {

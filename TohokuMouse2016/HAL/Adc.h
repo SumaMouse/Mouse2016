@@ -9,7 +9,7 @@
 #define	ADC_CH_WALL_SENS_LS		(1)
 #define	ADC_CH_BATTERY			(12)
 
-extern	void AdcInit_v(void);
+extern	void AdcInit(void);
 extern	u16 AdcRead(u8 channel);
 
 #endif

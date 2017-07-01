@@ -3,7 +3,7 @@
 
 extern void RspiInit(void);
 extern u16 RspiTxRx(u16 txData, u16* rxData);
-extern void RspiSetCS(u8 ch, u16 level);
+extern void RspiSetSS(u8 ch, u16 level);
 
 #endif
 

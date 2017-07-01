@@ -3,10 +3,10 @@
 
 
 /* この値以上で壁ありと判定 */
-#define	WALL_ON_SIDE_L		(40)
-#define	WALL_ON_SIDE_R		(40)
-#define	WALL_ON_FRONT_L		(40)
-#define	WALL_ON_FRONT_R		(45)
+#define	WALL_ON_SIDE_L		(500)
+#define	WALL_ON_SIDE_R		(500)
+#define	WALL_ON_FRONT_L		(500)
+#define	WALL_ON_FRONT_R		(500)
 
 /* マウスを迷路中央に置いた時の値 */
 #define	WALL_CENTER_SIDE_L	(100)

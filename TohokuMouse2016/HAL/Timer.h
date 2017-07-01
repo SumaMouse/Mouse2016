@@ -9,6 +9,7 @@ extern void StartMotorTimers(void);
 extern void StopMotorTimers(void);
 extern void SetRightMotorDutyReg(u16 value);
 extern void SetLeftMotorDutyReg(u16 value);
+extern void SetMotorDuty(float lDuty, float rDuty);
 
 
 #endif

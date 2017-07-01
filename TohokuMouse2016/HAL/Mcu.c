@@ -65,8 +65,8 @@ void	McuInit(void) {
 	/* パルス出力 */
 	MSTP(MTU) = 0;			//ストップ解除
 	
-	MTU3.TCR.BYTE = 0x22;	//b0-2:TPSC = 2		PCLK/16
-							//b3-4:CKEG = 0		Up Edge count
+	MTU3.TCR.BYTE = 0x30;	//b0-2:TPSC = 0		PCLK/1
+							//b3-4:CKEG = 2		Up Edge count
 							//b5-7:CCLR = 1		Clear TGRA compare match
 	MTU3.TMDR.BYTE = 0x02;	//b0-3:MD = 2		PWM mode1
 							//b4:BFA = 0
@@ -80,8 +80,8 @@ void	McuInit(void) {
 //	MTU.TSTR.BIT.CST3 = 1;
 
 
-	MTU4.TCR.BYTE = 0x22;	//b0-2:TPSC = 2		PCLK/16
-							//b3-4:CKEG = 0		Up Edge count
+	MTU4.TCR.BYTE = 0x30;	//b0-2:TPSC = 0		PCLK/1
+							//b3-4:CKEG = 2		Up Edge count
 							//b5-7:CCLR = 1		Clear TGRA compare match
 	MTU4.TMDR.BYTE = 0x02;	//b0-3:MD = 2		PWM mode1
 							//b4:BFA = 0

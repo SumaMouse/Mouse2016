@@ -4,9 +4,6 @@
 #include "Timer.h"
 
 
-#define		MOTOR_DRIVE_FREQ_TO_REGSTER		(1000)
-
-
 void TimerWait1ms(u32 time) {
 	
 	u32 count;
@@ -32,7 +29,7 @@ void TimerWait1_333us(u8 count) {
 }
 
 u16 Get1usTimer(void) {
-	return TMR1.TCNT;
+	return (u16)(TMR1.TCNT);
 }
 
 void StartMotorTimers(void) {
@@ -55,3 +52,14 @@ void SetLeftMotorDutyReg(u16 value) {
 	MTU4.TGRB = value;
 }
 
+void SetMotorDuty(float lDuty, float rDuty) {
+	
+	float freqReq;
+	
+	freqReq = (float)MTU3.TGRA;
+	MTU4.TGRB = (u16)(freqReq * lDuty);
+	
+	freqReq = (float)MTU4.TGRA;
+	MTU3.TGRB = (u16)(freqReq * rDuty);
+	
+}

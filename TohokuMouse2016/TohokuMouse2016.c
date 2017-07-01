@@ -13,6 +13,9 @@
 #include "Common.h"
 #include "iodefine.h"
 
+#include "Gpio.h"
+#include "Timer.h"
+
 #include "AplMain.h"
 
 //#include "typedefine.h"
@@ -35,6 +38,18 @@ void abort(void);
 void main(void)
 {
 	AplMainInit();
+
+	GpioWrteLed0(TRUE);
+	GpioWrteLed1(TRUE);
+	GpioWrteLed2(TRUE);
+
+	TimerWait1ms(200);
+
+	GpioWrteLed0(FALSE);
+	GpioWrteLed1(FALSE);
+	GpioWrteLed2(FALSE);
+
+	TimerWait1ms(100);
 
 	setpsw_i();
 
